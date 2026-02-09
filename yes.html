@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>She said YES! — Mishaal ❤️ Fatima</title>
+  <style>
+    :root{
+      --bg1:#fff5f8;
+      --bg2:#f6d7e3;
+      --ink:#161616;
+      --muted:#666;
+      --accent:#c2185b;
+      --accent2:#ff5a8b;
+
+      --card: rgba(255,255,255,.72);
+      --stroke: rgba(255,255,255,.65);
+      --shadow: 0 28px 90px rgba(0,0,0,.14);
+
+      --radius: 28px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding: 34px 16px 60px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(255,255,255,.85), transparent 62%),
+        radial-gradient(900px 520px at 85% 20%, rgba(255,255,255,.65), transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    .card{
+      width: min(860px, 100%);
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+      position: relative;
+      padding: 28px 26px 26px;
+      text-align:center;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(194,24,91,.14);
+      box-shadow: 0 10px 26px rgba(0,0,0,.06);
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: .2px;
+      user-select:none;
+      white-space: nowrap;
+      margin-bottom: 14px;
+    }
+
+    h1{
+      margin: 8px 0 8px;
+      font-size: clamp(28px, 4vw, 50px);
+      letter-spacing: -0.03em;
+      color: var(--accent);
+    }
+
+    p{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    img{
+      width: min(460px, 92vw);
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.16);
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.55);
+    }
+
+    .btn{
+      margin-top: 18px;
+      border: 0;
+      padding: 12px 18px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: 0 16px 36px rgba(194,24,91,.28);
+    }
+    .btn:active{ transform: scale(.98); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="pill">Mishaal ❤️ Fatima</div>
+    <h1>YAYYYYY!!! 🕺💃</h1>
+    <p>Official Valentine status unlocked 💖</p>
+
+    <img
+      src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+      alt="Dancing celebration"
+      loading="lazy"
+    />
+
+    <div>
+      <button class="btn" onclick="window.location.href='index.html'">Back ↩</button>
+    </div>
+  </div>
+</body>
+</html>

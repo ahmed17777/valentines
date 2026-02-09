@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mishaal ❤️ Fatima — Valentine</title>
+
+  <style>
+    :root{
+      --bg1:#fff6f9;
+      --bg2:#f4d6e3;
+      --ink:#171717;
+      --muted:#666;
+      --accent:#c2185b;
+      --accent2:#ff5a8b;
+
+      --card: rgba(255,255,255,.76);
+      --stroke: rgba(255,255,255,.70);
+      --shadow: 0 26px 80px rgba(0,0,0,.13);
+      --radius: 30px;
+    }
+
+    *{ box-sizing:border-box; }
+    html, body { height: 100%; }
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(255,255,255,.9), transparent 62%),
+        radial-gradient(900px 520px at 85% 20%, rgba(255,255,255,.7), transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow: hidden; /* keep it one screen */
+    }
+
+    /* floating hearts */
+    .hearts{
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      overflow:hidden;
+      opacity: .40;
+      z-index: 0;
+    }
+    .heart{
+      position:absolute;
+      font-size: 18px;
+      animation: drift linear infinite;
+      opacity: .95;
+    }
+    @keyframes drift{
+      from{ transform: translateY(110vh) translateX(0) scale(.9); }
+      to  { transform: translateY(-20vh) translateX(60px) scale(1.2); }
+    }
+
+    .wrap{
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display:grid;
+      place-items:center;
+      padding: 18px 14px; /* tighter so it fits */
+    }
+
+    .card{
+      width: min(720px, 100%);
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      padding: 18px 18px 18px;  /* tighter */
+      text-align:center;
+      position: relative;
+      overflow:hidden;
+    }
+
+    .content{ position:relative; z-index: 2; }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.80);
+      border: 1px solid rgba(194,24,91,.14);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    /* Smaller GIF so it fits on one page — NO CROPPING */
+    .gif{
+      border-radius: 18px;
+      overflow:hidden;
+      margin: 10px 0 12px;
+      /* box-shadow: 0 14px 36px rgba(0,0,0,.12); */
+      /* border: 1px solid rgba(0,0,0,.05); */
+      max-height: 240px;      /* slightly shorter so layout still fits */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* background: #fff;       adds clean background if aspect ratio differs */
+    }
+
+    .gif img{
+      max-height: 240px;
+      width: auto;            /* keep natural width */
+      max-width: 100%;
+      object-fit: contain;    /* ✅ ensures whole dog is visible */
+      display:block;
+    }
+
+
+    h1{
+      font-size: clamp(22px, 3.6vw, 40px);
+      margin: 8px 0 6px;
+      letter-spacing:-0.03em;
+    }
+
+    .sub{
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height:1.5;
+      font-size: 14px;
+    }
+
+    .arena{
+      position: relative;
+      margin-top: 8px;
+      min-height: 140px; /* slightly smaller */
+      display:grid;
+      place-items:center;
+    }
+
+    .btn{
+      border:0;
+      padding: 12px 22px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-weight: 950;
+      font-size: 17px;
+      letter-spacing: .2px;
+      transition: transform .12s ease, filter .12s ease;
+      user-select:none;
+      touch-action: manipulation;
+    }
+    .btn:active{ transform: scale(.97); }
+
+    #yesBtn{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#fff;
+      box-shadow: 0 14px 28px rgba(194,24,91,.26);
+      z-index: 2;
+    }
+
+    #noBtn{
+      background: rgba(255,255,255,.92);
+      color: var(--accent);
+      border: 1px solid rgba(194,24,91,.22);
+      box-shadow: 0 14px 28px rgba(0,0,0,.10);
+      position:absolute;
+      left: 60%;
+      top: 55%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .hint{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(0,0,0,.55);
+    }
+
+    /* Mini cupids layer */
+    .cupids{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index: 1;
+      opacity: .95;
+    }
+
+    .cupid{
+      position:absolute;
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.14));
+      animation: bob 4s ease-in-out infinite;
+    }
+    .cupid .emoji{
+      font-size: 28px;
+      transform: translateZ(0);
+    }
+    .cupid .arrow{
+      width: 70px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(194,24,91,.95), rgba(255,90,139,.65));
+      position: relative;
+      border-radius: 2px;
+    }
+    .cupid .arrow:after{
+      content:"";
+      position:absolute;
+      right:-2px;
+      top:50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 8px solid rgba(194,24,91,.95);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+
+    /* positions */
+    .c1{ left: 14px; top: 22px; }
+    .c2{ right: 18px; top: 58px; transform: scale(.95) rotate(6deg); }
+    .c3{ left: 22px; bottom: 20px; transform: scale(.9) rotate(-6deg); opacity:.8; }
+    .c4{ right: 22px; bottom: 18px; transform: scale(.92) rotate(8deg); opacity:.85; }
+
+    @keyframes bob{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(7px); }
+    }
+
+    /* arrow shoot animation on Yes */
+    .shoot .arrow{
+      animation: shoot 700ms ease-out forwards;
+    }
+    @keyframes shoot{
+      from{ transform: translateX(0); opacity: 1; }
+      to{ transform: translateX(160px); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" id="hearts"></div>
+
+  <div class="wrap">
+    <div class="card">
+      <!-- Mini cupids “shooting arrows” -->
+      <div class="cupids" aria-hidden="true">
+        <div class="cupid c1" id="cup1"><div class="emoji">💘</div><div class="arrow"></div></div>
+        <div class="cupid c2" id="cup2"><div class="emoji">💘</div><div class="arrow"></div></div>
+        <div class="cupid c3" id="cup3"><div class="emoji">💘</div><div class="arrow"></div></div>
+        <div class="cupid c4" id="cup4"><div class="emoji">💘</div><div class="arrow"></div></div>
+      </div>
+
+      <div class="content">
+        <div class="pill">Mishaal ❤️ Fatima</div>
+
+        <div class="gif">
+          <img src="https://media1.tenor.com/m/Me_XLnGTNBYAAAAd/dog-hiding.gif" alt="Dog hiding GIF">
+        </div>
+
+        <h1>Will you be my Valentine?</h1>
+        <p class="sub">Be honest… but also choose wisely 😌💘</p>
+
+        <div class="arena" id="arena">
+          <button class="btn" id="yesBtn">Yes 💞</button>
+          <button class="btn" id="noBtn">No 🙅‍♂️</button>
+        </div>
+
+        <div class="hint">Try to press “No” 😈</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const hearts = document.getElementById("hearts");
+    const arena  = document.getElementById("arena");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn  = document.getElementById("noBtn");
+    const cupids = [document.getElementById("cup1"),document.getElementById("cup2"),document.getElementById("cup3"),document.getElementById("cup4")];
+
+    // floating hearts
+    (function spawnHearts(){
+      const emojis = ["💗","💖","💘","💞","💕"];
+      for(let i=0;i<16;i++){
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        h.style.left = (Math.random()*100) + "vw";
+        h.style.animationDuration = (10 + Math.random()*10) + "s";
+        h.style.animationDelay = (-Math.random()*12) + "s";
+        h.style.fontSize = (14 + Math.random()*10) + "px";
+        hearts.appendChild(h);
+      }
+    })();
+
+    function clamp(n,min,max){ return Math.max(min, Math.min(max,n)); }
+
+    function moveNo(){
+      const a = arena.getBoundingClientRect();
+      const b = noBtn.getBoundingClientRect();
+      const maxX = a.width - b.width;
+      const maxY = a.height - b.height;
+      noBtn.style.left = clamp(Math.random()*maxX,10,maxX-10) + "px";
+      noBtn.style.top  = clamp(Math.random()*maxY,10,maxY-10) + "px";
+      noBtn.style.transform = "translate(0,0)";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("pointerdown", e => { e.preventDefault(); moveNo(); });
+
+    arena.addEventListener("mousemove", e => {
+      const b = noBtn.getBoundingClientRect();
+      const dist = Math.hypot(e.clientX-(b.left+b.width/2), e.clientY-(b.top+b.height/2));
+      if(dist < 85) moveNo();
+    });
+
+    // On Yes: make cupids "shoot", then navigate
+    yesBtn.addEventListener("click", ()=>{
+      cupids.forEach(c => c.classList.add("shoot"));
+      setTimeout(()=> window.location.href="yes.html", 350);
+    });
+  </script>
+</body>
+</html>
